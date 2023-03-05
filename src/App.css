@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  /* GLOBAL STYLES */
+  
+  body,
+  .App {
+    overflow: hidden;
+    font-size: 16px;
+  }
+  
+  button {
+    background: none;
+    border: none;
+  }
+  button:hover {
+    background-color: rgb(52, 24, 52);
+    color: white;
+  }
+  
+  .App {
+    display: flex;
+  }
+  
+  /* SIDE STYLES */
+  
+  .app-side {
+    width: 30%;
+    border-right: 1px solid #ddd;
+  }
+  
+  .app-side-header {
+    display: flex;
+    flex-direction: row;
+    padding-left: 25px;
+    border-bottom: 2px solid rgb(221, 221, 221);
+  }
+  .header:last-child {
+    margin-left: auto;
+    font-size: 2rem;
+    width: 60px;
+  }
+  .app-side-notes {
+    height: calc(100vh - 78px);
+    overflow-y: scroll;
+  }
+  .app-side-note {
+    padding: 25px;
+    border-bottom: 2px solid rgb(221, 221, 221);
+  }
+  .side-note-title {
+    display: flex;
+  }
+
+  .app-side-note small {
+    display: block;
+    color: grey;
+  }
+  
+  .app-side-note:hover {
+    background: rgb(221, 221, 221);
+  }
+  .app-side-note.active,
+  .app-side-note.active small {
+    background: rgb(52, 24, 52);
+    color: white;
+  }
+  
+  /* NOTE EDITOR/PREVIEW (MAIN) STYLES */
+  
+  .app-main {
+    width: 70%;
+  }
+  .app-main-note-edit,
+  .app-main-note-preview {
+    height: 50vh;
+  }
+  
+  .no-active-note {
+    width: 70%;
+    line-height: 100vh;
+    text-align: center;
+    font-size: 2rem;
+    color: rgb(173, 173, 173);
+  }
+  
+  /* Editing */
+  .app-main-note {
+    padding: 25px;
+    display: flex;
+    flex-direction: row;
+  }
+  .app-main-buttons {
+    margin-left: auto;
+  }
+  .app-main-buttons button {
+    font-size: 15pt;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .app-main-title-date {
+    display: flex;
+    flex-direction: column;
+  }
+  .app-main-title-date input:first-child {
+    border: none;
+    font-size: 28pt;
+  }
+  .app-main-title-date input:last-child {
+    width: 200px;
+    font-size: 15pt;
+    border: none;
+  }
+  
