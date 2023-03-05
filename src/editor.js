@@ -3,12 +3,21 @@ import ReactQuill from "react-quill";
 function Editor({deleteNote, currentNote, onUpdate}) {
     
     const onEditor = (key,value) => {
-        onUpdate({ //reconstructed currentNote
-            id: currentNote.id,
-            [key]: value,
-            date: Date.now()
+        if (key === "title" || key === "body") {
+            onUpdate({ //reconstructed currentNote
+                id: currentNote.id,
+                [key]: value,
+                date: Date.now()
+            })
         }
-        )
+        else {
+            onUpdate({ //reconstructed currentNote
+                id: currentNote.id,
+                title: currentNote.title,
+                body: currentNote.body,
+                date: value
+            })
+        }
     };
 
     if(!currentNote) return <div className="no-active-note">Select a note, or create a new one</div>
@@ -26,6 +35,7 @@ function Editor({deleteNote, currentNote, onUpdate}) {
                 type="datetime-local"
                 id="date"
                 value={currentNote.date}
+                onChange={(e) => onEditor("date", e.target.value)}
                 />
             </div>
 
