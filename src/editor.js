@@ -40,8 +40,12 @@ function Editor({deleteNote, currentNote, onUpdate}) {
             </div>
 
             <div className="app-main-buttons">
-                <button>Save</button>
-                <button>Delete</button>
+                <button className="saveButton">Save</button>
+                <button 
+                className="deleteButton" 
+                onClick={(e) => deleteNote(currentNote.id)}>
+                Delete
+                </button>
             </div>
         </div>
 
