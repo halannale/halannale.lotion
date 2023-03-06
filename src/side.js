@@ -24,7 +24,7 @@ function Side({notes, addNote, currentNote, setCurrentNote}) {
                     <strong>{note.title}</strong>
                 </div>
                 <small className="side-note-date">{new Date(note.date).toLocaleString("en-US", options)}</small>
-                <p>{note.body && note.body.substr(0,50) + "..."}</p>
+                <p>{note.body.replace(/(<([^>]+)>)/gi, "") && note.body.replace(/(<([^>]+)>)/gi, "").substr(0,50) + "..."}</p>
                 </div>
             ))}
         </div>

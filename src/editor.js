@@ -1,14 +1,16 @@
 import ReactQuill from "react-quill";
+//import {useOutletContext} from "react-router-dom";
+
 
 function Editor({deleteNote, currentNote, onUpdate}) {
-    
     const onEditor = (key,value) => {
-        if (key === "title" || key === "body") {
+        if (key === "title") {
             onUpdate({ //reconstructed currentNote
                 id: currentNote.id,
-                [key]: value,
-                date: Date.now()
-            })
+                title: value,
+                body: currentNote.body,
+                date: currentNote.date
+            });
         }
         else {
             onUpdate({ //reconstructed currentNote
@@ -16,8 +18,17 @@ function Editor({deleteNote, currentNote, onUpdate}) {
                 title: currentNote.title,
                 body: currentNote.body,
                 date: value
-            })
+            });
         }
+    };
+
+    const onUpdateBody = (value)  => {
+        onUpdate({ //reconstructed currentNote
+            id: currentNote.id,
+            title: currentNote.title,
+            body: value,
+            date: currentNote.date
+        })
     };
 
     if(!currentNote) return <div className="no-active-note">Select a note, or create a new one</div>
@@ -34,7 +45,7 @@ function Editor({deleteNote, currentNote, onUpdate}) {
                 <input 
                 type="datetime-local"
                 id="date"
-                value={currentNote.date}
+                value={new Date(currentNote.date).toISOString().substr(0,16)}
                 onChange={(e) => onEditor("date", e.target.value)}
                 />
             </div>
@@ -43,21 +54,20 @@ function Editor({deleteNote, currentNote, onUpdate}) {
                 <button className="saveButton">Save</button>
                 <button 
                 className="deleteButton" 
-                onClick={(e) => deleteNote(currentNote.id)}>
+                onClick={() => deleteNote(currentNote.id)}>
                 Delete
                 </button>
             </div>
         </div>
 
         <div className="app-main-editor">
-            <ReactQuill
+                <ReactQuill
                 value={currentNote.body}
                 id="body"
-                onChange={(e) => onEditor("body", e.target.value)}
-            />
+                onChange={onUpdateBody}
+                />
         </div>
     </div>;
 }
 
 export default Editor;
-//<button onClick={{} => deleteNote(note.id)}>Delete</button>
