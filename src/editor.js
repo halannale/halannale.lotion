@@ -1,6 +1,5 @@
 import ReactQuill from "react-quill";
-//import {useOutletContext} from "react-router-dom";
-
+import {useNavigate} from "react-router-dom";
 
 function Editor({deleteNote, currentNote, onUpdate}) {
     const onEditor = (key,value) => {
@@ -31,6 +30,11 @@ function Editor({deleteNote, currentNote, onUpdate}) {
         })
     };
 
+    const navigate = useNavigate();
+    const goToView = () => {
+        navigate(`/notes`);
+    }
+
     if(!currentNote) return <div className="no-active-note">Select a note, or create a new one</div>
 
     return <div className="app-main">
@@ -51,7 +55,7 @@ function Editor({deleteNote, currentNote, onUpdate}) {
             </div>
 
             <div className="app-main-buttons">
-                <button className="saveButton">Save</button>
+                <button className="saveButton" onClick={goToView}>Save</button>
                 <button 
                 className="deleteButton" 
                 onClick={() => deleteNote(currentNote.id)}>
