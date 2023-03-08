@@ -1,17 +1,16 @@
 import React from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-//import { useParams } from "react-router-dom";
 import Layout from './Layout';
 import './App.css';
 import Editing from "./Editing";
 import Viewing from "./Viewing";
 
 function App() {
-
   return (
     <BrowserRouter>
     <Layout>
       <Routes>
+        <Route path="/" element={<Viewing />} />
         <Route path="/notes" element={<Viewing />} />
         <Route path="/notes/edit" element={<Editing />} />
       </Routes>
