@@ -96,10 +96,6 @@
     margin-left: 30px;
     flex-basis: 65rem;
   }
-  .app-main-note-edit,
-  .app-main-note-preview {
-    height: 50vh;
-  }
   
   .no-active-note {
     width: 70%;
