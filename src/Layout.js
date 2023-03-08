@@ -1,6 +1,4 @@
-import {Outlet} from "react-router-dom";
 import "./App.css";
-import Side from "./side";
 
 function Layout(props) {
     const menu = () => {
